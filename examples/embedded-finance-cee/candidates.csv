@@ -1,0 +1,7 @@
+name,country,stage,founded,funding_amount,funding_currency,traction,funding,differentiation,theme_fit,regulatory,total,approved,website
+Wealthon,Poland,growth,2019,115500000,EUR,4,5,3,4,4,80.0,True,https://wealthon.com
+Wallester,Estonia,growth,2016,,EUR,4,2,4,5,5,79.0,True,https://wallester.com
+Flowpay,Czech Republic,growth,,35800000,USD,3,4,4,5,3,76.0,True,https://www.flowpay.io
+Montonio,Estonia,early,,11000000,EUR,3,3,3,4,4,67.0,True,https://montonio.com
+PayPo,Poland,growth,2017,,EUR,4,2,3,4,3,65.0,True,https://paypo.pl
+Paynetics,Bulgaria,early,,2500000,EUR,3,2,3,4,4,63.0,False,https://paynetics.digital

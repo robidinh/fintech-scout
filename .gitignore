@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.ruff_cache/
+*.egg-info/
+.env
+outputs/
+checkpoint.json*
+
+# personal working notes for Claude Code, not part of the project
+CLAUDE.md
+.claude/

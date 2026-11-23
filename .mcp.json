@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "fintech-scout": {
+      "command": "python",
+      "args": ["-m", "scout.mcp_server"]
+    }
+  }
+}

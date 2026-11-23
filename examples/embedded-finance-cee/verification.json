@@ -1,0 +1,324 @@
+{
+  "summary": {
+    "verified": 23,
+    "partial": 0,
+    "not_found": 1,
+    "unreachable": 1,
+    "no_figures": 8,
+    "claims": 33,
+    "checkable": 24,
+    "verified_rate": 0.96
+  },
+  "claims": [
+    {
+      "company": "Flowpay",
+      "claim": "Secured €30M from Fasanara Capital for SME working-capital financing and embedded finance (March 2025).",
+      "url": "https://www.eu-startups.com/2025/03/flowpay-raises-e30-million-to-lend-to-smes-and-innovate-embedded-finance/",
+      "status": "verified",
+      "found": [
+        30.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Flowpay",
+      "claim": "Launched in the Netherlands with a €30M facility from Fasanara Capital.",
+      "url": "https://www.eu-startups.com/2025/11/czech-startup-flowpay-launches-in-the-netherlands-with-e30-million-backing-to-close-europes-sme-financing-gap",
+      "status": "verified",
+      "found": [
+        30.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Flowpay",
+      "claim": "Total funding $35.8M, latest round March 2025, expanding embedded lending infrastructure.",
+      "url": "https://theaiinsider.tech/2026/09/17/10-cee-baltics-based-ai-scale-ups-you-need-to-know-in-2026/",
+      "status": "verified",
+      "found": [
+        35.8
+      ],
+      "missing": []
+    },
+    {
+      "company": "Flowpay",
+      "url": "https://theaiinsider.tech/2026/09/17/10-cee-baltics-based-ai-scale-ups-you-need-to-know-in-2026/",
+      "claim": "Total funding USD 35,800,000",
+      "status": "verified",
+      "found": [
+        35800000.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Montonio",
+      "claim": "Raised €11M Series A led by Index Ventures.",
+      "url": "https://siliconcanals.com/montonio-raises-11m/",
+      "status": "verified",
+      "found": [
+        11.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Montonio",
+      "claim": "Expanded from open banking payments into card payments, BLIK, shipping logistics and embedded BNPL/financing.",
+      "url": "https://www.embeddedfinanceindex.com/companies/montonio",
+      "status": "no_figures"
+    },
+    {
+      "company": "Montonio",
+      "claim": "Exclusive financing partnership with licensed bank Inbank.",
+      "url": "https://inbank.eu/news/montonio-and-inbank-join-forces-to-offer-flexible-financing-solutions",
+      "status": "no_figures"
+    },
+    {
+      "company": "Montonio",
+      "url": "https://siliconcanals.com/montonio-raises-11m/",
+      "claim": "Total funding EUR 11,000,000",
+      "status": "verified",
+      "found": [
+        11000000.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Wallester",
+      "claim": "Estonian FSA-regulated payment institution and Visa Principal Member; card issuing across EEA and UK.",
+      "url": "https://www.financemagnates.com/thought-leadership/wallester-secures-top-fintech-spot-in-financial-times-ft1000-as-embedded-finance-scales/",
+      "status": "no_figures"
+    },
+    {
+      "company": "Wallester",
+      "claim": "Named #1 fastest-growing company in its category in FT1000 2026.",
+      "url": "https://www.financemagnates.com/thought-leadership/wallester-secures-top-fintech-spot-in-financial-times-ft1000-as-embedded-finance-scales/",
+      "status": "verified",
+      "found": [
+        1.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Wallester",
+      "claim": "Founded 2016; scaled into a licensed Visa Principal Member.",
+      "url": "https://wallester.com/blog/resources/events/a-new-home-for-a-new-era-wallester-opens-its-headquarters-in-tallinns-golden-gate",
+      "status": "verified",
+      "found": [
+        2016.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Paynetics",
+      "claim": "Closed a €2.5M round (2020) from New Vision 3 and Bulgarian American Credit Bank; full-stack acquiring, issuing, e-wallet and account management.",
+      "url": "https://thepaypers.com/payments/news/paynetics-closes-a-eur-25-mln-funding-round",
+      "status": "verified",
+      "found": [
+        2.5
+      ],
+      "missing": []
+    },
+    {
+      "company": "Paynetics",
+      "claim": "Named among regulated European embedded finance infrastructure providers.",
+      "url": "https://connect.cefpro.com/article/view/embedded-finance-in-europe-shifts-from-hype-to-hard-reality",
+      "status": "no_figures"
+    },
+    {
+      "company": "Paynetics",
+      "url": "https://thepaypers.com/payments/news/paynetics-closes-a-eur-25-mln-funding-round",
+      "claim": "Total funding EUR 2,500,000",
+      "status": "verified",
+      "found": [
+        2500000.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Wealthon",
+      "claim": "Raised €115.5M (PLN 531M) in Feb 2025; debt financing from Fortress Investment Group and equity from 3TS plus angels.",
+      "url": "https://www.vestbee.com/insights/articles/wealthon-raises-115-5-m",
+      "status": "verified",
+      "found": [
+        115.5,
+        531.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Wealthon",
+      "claim": "Equity from 3TS and angel investors in the round.",
+      "url": "https://en.ain.ua/2025/02/06/wealthon-secures-a-eur1155m/",
+      "status": "verified",
+      "found": [
+        3.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Wealthon",
+      "claim": "UniCredit signed a three-year agreement for up to PLN 0.5bn (EUR 115M) of SME receivables; Wealthon revenue just under PLN 30M (EUR 6.9M) in 2025.",
+      "url": "https://xyz.pl/poland-unpacked/unicredit-deepens-embedded-finance-push-with-wealthon-deal-1271/",
+      "status": "verified",
+      "found": [
+        0.5,
+        6.9,
+        30.0,
+        115.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "Wealthon",
+      "claim": "Fortress Investment Group debt financing round recorded.",
+      "url": "https://www.crunchbase.com/funding_round/wealthon-debt-financing--6e6f7083",
+      "status": "no_figures"
+    },
+    {
+      "company": "Wealthon",
+      "url": "https://www.vestbee.com/insights/articles/wealthon-raises-115-5-m",
+      "claim": "Total funding EUR 115,500,000",
+      "status": "verified",
+      "found": [
+        115500000.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "PayPo",
+      "claim": "Established 2017; described as the largest BNPL provider in Poland, monetising merchants and consumers.",
+      "url": "https://www.crunchbase.com/organization/paypo",
+      "status": "unreachable"
+    },
+    {
+      "company": "PayPo",
+      "claim": "Employee range 101-250 and ranked top Polish payments startup.",
+      "url": "https://www.startupblink.com/top-startups/poland/fintech/payments",
+      "status": "not_found",
+      "found": [],
+      "missing": [
+        101.0,
+        250.0
+      ]
+    },
+    {
+      "company": "PayPo",
+      "claim": "Directory lists total funding between €10M and €25M (sources conflict; not precisely verified).",
+      "url": "https://www.eu-startups.com/directory/paypo/",
+      "status": "verified",
+      "found": [
+        10.0,
+        25.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "(market)",
+      "claim": "Startups in Central and Eastern Europe raised €1.83 billion from January to September 2026, up 25% from €1.46 billion a year earlier; Baltic startups raised €326 million of it versus €506 million in the same months of 2025.",
+      "url": "https://badideas.fund/answers/startup-funding-raised-cee",
+      "status": "verified",
+      "found": [
+        1.46,
+        1.83,
+        25.0,
+        326.0,
+        506.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "(market)",
+      "claim": "From January to September 2026, Czech startups raised the most capital in CEE (€513 million) and Polish startups closed the most rounds (67).",
+      "url": "https://badideas.fund/answers/startup-funding-by-country-cee",
+      "status": "verified",
+      "found": [
+        67.0,
+        513.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "(market)",
+      "claim": "Regulated infrastructure providers such as Solaris, Paynetics, Modulr, Swan, Treezor, Vodeno and OpenPayd supply ledgers, payment rails and card issuing to European embedded finance.",
+      "url": "https://connect.cefpro.com/article/view/embedded-finance-in-europe-shifts-from-hype-to-hard-reality",
+      "status": "no_figures"
+    },
+    {
+      "company": "(market)",
+      "claim": "Inbank is a fintech with an EU banking licence connecting merchants, consumers and financial institutions on an embedded finance platform; it partners with 5,400+ merchants and has 865,000+ active contracts (per Fintech Baltic listing).",
+      "url": "https://fintechbaltic.com/fintech-estonia-startups-listing/",
+      "status": "verified",
+      "found": [
+        5400.0,
+        865000.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "(market)",
+      "claim": "Inbank entered an exclusive partnership with Montonio to offer flexible financing at checkout.",
+      "url": "https://inbank.eu/news/montonio-and-inbank-join-forces-to-offer-flexible-financing-solutions",
+      "status": "no_figures"
+    },
+    {
+      "company": "(market)",
+      "claim": "Wallester was named the #1 fastest-growing company in the Fintech, Financial Services & Insurance category in the Financial Times FT1000 2026.",
+      "url": "https://www.financemagnates.com/thought-leadership/wallester-secures-top-fintech-spot-in-financial-times-ft1000-as-embedded-finance-scales/",
+      "status": "verified",
+      "found": [
+        1.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "(market)",
+      "claim": "Embedded finance is the broader category including BaaS plus card issuing, payments, lending, AP/AR, payroll and compliance; BaaS is the subset focused on regulated banking products from a bank.",
+      "url": "https://www.openbankingtracker.com/embedded-finance",
+      "status": "no_figures"
+    },
+    {
+      "company": "(market)",
+      "claim": "Inbank and Eurobank agreed to establish a 50/50 embedded finance joint venture in Greece; Inbank has 6,200+ merchant partners, 847,000+ active contracts, 7 European markets, and its bonds are listed on Nasdaq Tallinn.",
+      "url": "https://finance.yahoo.com/economy/policy/articles/inbank-eurobank-establish-embedded-finance-053000933.html",
+      "status": "verified",
+      "found": [
+        50.0,
+        6200.0,
+        847000.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "(market)",
+      "claim": "UniCredit is scaling its Banking-as-a-Service strategy in Europe via a three-year, up to PLN 0.5bn (EUR 115M) SME receivables agreement with Polish Wealthon.",
+      "url": "https://xyz.pl/poland-unpacked/unicredit-deepens-embedded-finance-push-with-wealthon-deal-1271/",
+      "status": "verified",
+      "found": [
+        0.5,
+        115.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "(market)",
+      "claim": "A PragmaGO report claims embedded lending boosts SME growth by up to 36% in Poland (vendor-sourced claim).",
+      "url": "https://www.crowdfundinsider.com/2025/12/256289-embedded-lending-boosts-sme-growth-in-poland-report/",
+      "status": "verified",
+      "found": [
+        36.0
+      ],
+      "missing": []
+    },
+    {
+      "company": "(market)",
+      "claim": "Tracxn tracks 49 embedded lending companies in Eastern Europe, 22 of them funded.",
+      "url": "https://tracxn.com/d/explore/embedded-lending-startups-in-eastern-europe/__s7kF_eZpIElxea63GmrXy9Vs3rJlbZ_s43m-S28ZLFQ",
+      "status": "verified",
+      "found": [
+        22.0,
+        49.0
+      ],
+      "missing": []
+    }
+  ]
+}
