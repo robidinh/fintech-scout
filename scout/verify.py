@@ -51,10 +51,19 @@ def key_figures(claim: str) -> set[float]:
     return distinctive or figures or nums
 
 
-def _found(fig: float, page_nums: set[float]) -> bool:
+def _same(fig: float, number: float) -> bool:
     # "15.5M" in a claim can be "15,500,000" on the page, "1.70bn" can be "1.7 billion"
-    variants = {fig, fig * 1e3, fig * 1e6, fig * 1e9, fig / 1e3, fig / 1e6, fig / 1e9}
-    return any(abs(v - p) <= 1e-6 * max(1.0, abs(p)) for v in variants for p in page_nums)
+    variants = (fig, fig * 1e3, fig * 1e6, fig * 1e9, fig / 1e3, fig / 1e6, fig / 1e9)
+    return any(abs(v - number) <= 1e-6 * max(1.0, abs(number)) for v in variants)
+
+
+def _context(fig: float, page: str, width: int = 120) -> str | None:
+    """The page text around the first occurrence of a figure, for a person to read."""
+    for m in _NUM.finditer(page):
+        if _same(fig, float(m.group(1).replace(",", ""))):
+            snippet = page[max(0, m.start() - width) : m.end() + width]
+            return " ".join(snippet.split())
+    return None
 
 
 def check_claim(claim: str, page: str | None) -> dict:
@@ -63,11 +72,11 @@ def check_claim(claim: str, page: str | None) -> dict:
         return {"status": "no_figures"}
     if page is None:
         return {"status": "unreachable"}
-    page_nums = numbers_in(page)
-    hit = sorted(f for f in figs if _found(f, page_nums))
-    miss = sorted(f for f in figs if f not in hit)
+    context = {f: _context(f, page) for f in figs}
+    hit = sorted(f for f in figs if context[f])
+    miss = sorted(f for f in figs if not context[f])
     status = "verified" if not miss else ("partial" if hit else "not_found")
-    return {"status": status, "found": hit, "missing": miss}
+    return {"status": status, "found": hit, "missing": miss, "context": [context[f] for f in hit]}
 
 
 def collect_claims(candidates: list[dict], facts: list[dict]) -> list[dict]:

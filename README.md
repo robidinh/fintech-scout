@@ -12,20 +12,32 @@ python -m scout "embedded finance startups in Central and Eastern Europe"
 
 ## Example
 
-A full run is in [`examples/embedded-finance-cee/`](examples/embedded-finance-cee/): the [memo](examples/embedded-finance-cee/memo.md), the [Excel market map](examples/embedded-finance-cee/market_map.xlsx), the [source check](examples/embedded-finance-cee/verification.md) and the [audit log](examples/embedded-finance-cee/audit.jsonl).
+A full run is in [`examples/embedded-finance-cee/`](examples/embedded-finance-cee/): the [memo](examples/embedded-finance-cee/memo.md), the [Excel market map](examples/embedded-finance-cee/market_map.xlsx), the [source check](examples/embedded-finance-cee/verification.md), my [hand check](examples/embedded-finance-cee/hand_check.md) of it, and the [audit log](examples/embedded-finance-cee/audit.jsonl).
 
 | Claude Sonnet 5.5, one run, Nov 2026 | |
 |---|---|
 | Companies validated / shortlisted | 6 / 5 |
 | Clean on first validation | 80% |
 | Cited links not found in search results | 0 |
-| Claims found on the cited page | 23 of 24 |
+| Claims found on the cited page (automatic) | 23 of 24 |
+| Of those, fully supported when I read the page | 19 of 23 (83%) |
 | Claims the critic could not match to evidence | 5, listed in the memo |
 | Top 3 unchanged under ±50% weight changes | 100% of 1,000 scenarios |
 | Searches, turns, time | 15, 8, 3.5 min |
 | Cost | about $0.64 |
 
 This is a single run, not an average. `python -m scout.evaluate` runs several themes for comparison.
+
+### How good is the automatic source check?
+
+The automatic check only shows that a number appears on the cited page. I read all 24 checkable claims against their pages to see how often that is enough. Of the 23 marked verified, 19 were fully supported, 2 partly and 2 not at all. One claim the check could not confirm was in fact correct (the page loads its data with JavaScript).
+
+The failures were instructive:
+
+- Three of the four were the same mistake: one funding round recorded as the company's *total* funding. The number is on the page, so the check passes, but the page never says "total". In one case the article mentions an earlier round, so the total was wrong. The tool description for funding now says a single round is not the total.
+- One claim said Tracxn lists 49 companies. The page says 47; the "49" the check found was "Tracxn Score: 49/100".
+
+`python -m scout.handcheck make <run folder>` builds the review sheet (claim, the page text around each matched number, a verdict column), and `score` summarises it.
 
 ## How a run works
 
@@ -95,6 +107,7 @@ The tests replace Claude with a scripted fake, so they run offline in a couple o
 
 - The API ran out of credit halfway through a run and everything was lost. Runs now save their data and a status on any failure, and can be resumed.
 - The agent used all 15 searches in its first turn. When validation then flagged three companies, it had no searches left to fix them, dropped them, fell below the minimum of five, and was stuck. The loop kept telling it to continue for 34 turns, which cost about $0.30 for nothing. Now at most 10 searches are allowed per turn, the minimum drops to three once searches run out, and two turns without a tool call end the run.
+- Reading the cited pages by hand showed the source check is right about 83% of the time, and that most errors came from treating one funding round as total funding (see above).
 - A cheaper model recorded EUR 33.1M of funding as "33". The source check caught it because 33 wasn't on the page. Validation now rejects amounts that look like millions.
 - The first runs were expensive because every turn resends the whole conversation, search results included. Prompt caching cut the cost of that repeated input to about 5%.
 - The critic finds real problems, but the agent tended to reword a flagged claim rather than remove it. The instruction now says to source it or delete it.
@@ -103,5 +116,5 @@ The tests replace Claude with a scripted fake, so they run offline in a couple o
 
 - Which companies get found, and how they are rated, depends on the model. Two runs on the same theme can give different lists. The checks, scoring maths and ranking test are reproducible; the research is not.
 - The checks show that a claim can be traced to a source, not that the source is right.
-- The source check matches numbers. It can't check claims without figures, and a number on the page might refer to something else.
+- The source check matches numbers. It can't check claims without figures, and a number on the page might refer to something else: in the hand check, 4 of 23 "verified" claims were not fully supported.
 - The ranking test varies the weights but not the ratings, which are probably the bigger source of uncertainty.

@@ -18,7 +18,10 @@
       "found": [
         30.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "Flowpay raises €30 million to lend to SMEs and innovate embedded finance | EU-Startups"
+      ]
     },
     {
       "company": "Flowpay",
@@ -28,7 +31,10 @@
       "found": [
         30.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "Czech startup Flowpay launches in the Netherlands with €30 million backing to close Europe’s SME financing gap | EU-Startups"
+      ]
     },
     {
       "company": "Flowpay",
@@ -38,7 +44,10 @@
       "found": [
         35.8
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "e agent platform. 3. Flowpay Headquarters: Prague, Hlavní město Praha, Czech Republic | Total Funding: $35.8M | Last Funding: March 19, 2025 Small and medium businesses often struggle to access financing through tradition"
+      ]
     },
     {
       "company": "Flowpay",
@@ -48,7 +57,10 @@
       "found": [
         35800000.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "e agent platform. 3. Flowpay Headquarters: Prague, Hlavní město Praha, Czech Republic | Total Funding: $35.8M | Last Funding: March 19, 2025 Small and medium businesses often struggle to access financing through tradition"
+      ]
     },
     {
       "company": "Montonio",
@@ -58,7 +70,10 @@
       "found": [
         11.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "Estonian fintech startup Montonio raises €11M Series A round led by Index Ventures - Silicon Canals"
+      ]
     },
     {
       "company": "Montonio",
@@ -80,7 +95,10 @@
       "found": [
         11000000.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "Estonian fintech startup Montonio raises €11M Series A round led by Index Ventures - Silicon Canals"
+      ]
     },
     {
       "company": "Wallester",
@@ -96,7 +114,10 @@
       "found": [
         1.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "ester Secures Top Fintech Spot in Financial Times’ FT1000 as Embedded Finance Scales 2026-03-23T07:58:22.150+02:00 M o n d a y , 2 3 / 0 3 / 2 0 2 6 | 0 5 : 5 8 G M T by Wallester"
+      ]
     },
     {
       "company": "Wallester",
@@ -106,7 +127,10 @@
       "found": [
         2016.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "n Tallinn’s Golden Gate building, marking a strategic milestone in the company’s rapid expansion. Since its founding in 2016, Wallester has scaled from a local startup into a leading European fintech and licensed Visa Principal Member, providin"
+      ]
     },
     {
       "company": "Paynetics",
@@ -116,7 +140,10 @@
       "found": [
         2.5
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "Paynetics closes a EUR 2.5 mln funding round"
+      ]
     },
     {
       "company": "Paynetics",
@@ -132,7 +159,10 @@
       "found": [
         2500000.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "Paynetics closes a EUR 2.5 mln funding round"
+      ]
     },
     {
       "company": "Wealthon",
@@ -143,7 +173,11 @@
         115.5,
         531.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "Polish fintech startup Wealthon raises €115.5M to scale up financing for SMEs | Vestbee",
+        "on, which provides integrated financial solutions for small and medium-sized businesses, has raised €115.5 million (PLN 531 million) in funding. The new capital comes from 3TS Capital Partners and affiliates of Fortress Investment Group, as re"
+      ]
     },
     {
       "company": "Wealthon",
@@ -153,7 +187,10 @@
       "found": [
         3.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "ium-sized businesses, has secured €115.5 million (PLN 531 million) in its latest funding round. The round was backed by 3TS, which provided equity funding and a group of angel investors. 4Growth VC shared the news with AIN via a press releas"
+      ]
     },
     {
       "company": "Wealthon",
@@ -166,7 +203,13 @@
         30.0,
         115.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "edded finance push with Wealthon deal UniCredit is scaling its Banking-as-a-Service strategy in Europe through a PLN 0.5 billion (EUR 115 million) agreement that channels SME lending via automated receivables purchases Anna Bełci",
+        "Poland F inancial results and path to profitability In 2025, Wealthon generated just under PLN 30 million (EUR 6.9 million) in revenue. For the current year, the company expects to reach approximately PLN 40 million (EUR 9.2 million)",
+        "s, EY-Parthenon Poland F inancial results and path to profitability In 2025, Wealthon generated just under PLN 30 million (EUR 6.9 million) in revenue. For the current year, the company expects to reach approximately PLN 40 million (",
+        "h with Wealthon deal UniCredit is scaling its Banking-as-a-Service strategy in Europe through a PLN 0.5 billion (EUR 115 million) agreement that channels SME lending via automated receivables purchases Anna Bełcik 03.05.2"
+      ]
     },
     {
       "company": "Wealthon",
@@ -182,7 +225,10 @@
       "found": [
         115500000.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "Polish fintech startup Wealthon raises €115.5M to scale up financing for SMEs | Vestbee"
+      ]
     },
     {
       "company": "PayPo",
@@ -199,7 +245,8 @@
       "missing": [
         101.0,
         250.0
-      ]
+      ],
+      "context": []
     },
     {
       "company": "PayPo",
@@ -210,7 +257,11 @@
         10.0,
         25.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "eckie Tags Apps, Credit, E-Commerce, Internet, Mobile Payments Total Funding Between €10 million-€25 million Founded 2017 Website http://paypo.pl",
+        "Tags Apps, Credit, E-Commerce, Internet, Mobile Payments Total Funding Between €10 million-€25 million Founded 2017 Website http://paypo.pl"
+      ]
     },
     {
       "company": "(market)",
@@ -224,7 +275,14 @@
         326.0,
         506.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "ise in 2026? Startups in Central and Eastern Europe raised €1.83 billion from January to September 2026, up 25% from €1.46 billion a year earlier. Baltic startups raised €326 million of it, against €506 million in the same months of 2025.",
+        "SWER UPDATED OCT 18, 2026 How much did CEE startups raise in 2026? Startups in Central and Eastern Europe raised €1.83 billion from January to September 2026, up 25% from €1.46 billion a year earlier. Baltic startups raised €326 million",
+        "tartups raise in 2026? Startups in Central and Eastern Europe raised €1.83 billion from January to September 2026, up 25% from €1.46 billion a year earlier. Baltic startups raised €326 million of it, against €506 million in the same months",
+        "raised €1.83 billion from January to September 2026, up 25% from €1.46 billion a year earlier. Baltic startups raised €326 million of it, against €506 million in the same months of 2025. The figures January to September 2025 2026",
+        "nuary to September 2026, up 25% from €1.46 billion a year earlier. Baltic startups raised €326 million of it, against €506 million in the same months of 2025. The figures January to September 2025 2026 Capital raised, CEE €1.4"
+      ]
     },
     {
       "company": "(market)",
@@ -235,7 +293,11 @@
         67.0,
         513.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "artups raised the most capital in Central and Eastern Europe, €513 million, and Polish startups closed the most rounds, 67. The Baltics together raised €326 million on 71 rounds, more capital than Poland, against €506 million on 140 rounds a",
+        "s the most VC? From January to September 2026, Czech startups raised the most capital in Central and Eastern Europe, €513 million, and Polish startups closed the most rounds, 67. The Baltics together raised €326 million on 71 rounds, more c"
+      ]
     },
     {
       "company": "(market)",
@@ -252,7 +314,11 @@
         5400.0,
         865000.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "nects merchants, consumers and financial institutions on its next generation embedded finance platform. Partnering with 5,400+ merchants, Inbank has 865,000+ active contracts and collects deposits across Europe. Its bonds are listed on the Nasda",
+        "d financial institutions on its next generation embedded finance platform. Partnering with 5,400+ merchants, Inbank has 865,000+ active contracts and collects deposits across Europe. Its bonds are listed on the Nasdaq Tallinn Stock Exchange."
+      ]
     },
     {
       "company": "(market)",
@@ -268,7 +334,10 @@
       "found": [
         1.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "ester Secures Top Fintech Spot in Financial Times’ FT1000 as Embedded Finance Scales 2026-03-23T07:58:22.150+02:00 M o n d a y , 2 3 / 0 3 / 2 0 2 6 | 0 5 : 5 8 G M T by Wallester"
+      ]
     },
     {
       "company": "(market)",
@@ -286,7 +355,12 @@
         6200.0,
         847000.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "My Money BETA Credit Cards Compare Credit Cards Best 0% APR Cards Best Balance Transfer Best Cash Back Cards Best Travel Cards Banki",
+        "g merchants, consumers and financial institutions through its embedded finance platform. Inbank partners with more than 6,200 merchant partners, has more than 847,000 active contracts and operates across 7 European markets. Inbank bonds are list",
+        "stitutions through its embedded finance platform. Inbank partners with more than 6,200 merchant partners, has more than 847,000 active contracts and operates across 7 European markets. Inbank bonds are listed on the Nasdaq Tallinn Stock Exchange."
+      ]
     },
     {
       "company": "(market)",
@@ -297,7 +371,11 @@
         0.5,
         115.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "edded finance push with Wealthon deal UniCredit is scaling its Banking-as-a-Service strategy in Europe through a PLN 0.5 billion (EUR 115 million) agreement that channels SME lending via automated receivables purchases Anna Bełci",
+        "h with Wealthon deal UniCredit is scaling its Banking-as-a-Service strategy in Europe through a PLN 0.5 billion (EUR 115 million) agreement that channels SME lending via automated receivables purchases Anna Bełcik 03.05.2"
+      ]
     },
     {
       "company": "(market)",
@@ -307,7 +385,10 @@
       "found": [
         36.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "aGO , a merchant cash advance and online lending platform, claims that embedded lending is boosting SME growth by up to 36% in Poland. PragmaGO (Pragma Group Organizacji) is a Polish Fintech specializing in providing financing and B2B “B uy"
+      ]
     },
     {
       "company": "(market)",
@@ -318,7 +399,11 @@
         22.0,
         49.0
       ],
-      "missing": []
+      "missing": [],
+      "context": [
+        "dded Lending sector in Eastern Europe The Embedded Lending sector in Eastern Europe comprises 47 companies , including 22 funded companies having collectively raised $169M in venture capital money and private equity. Out of these, 8 are Ser",
+        "Ventures and 6 Other s Latest Funding Round : Conventional Debt, Nov 11, 2025 , $ ***** Tracxn Score : 49 /100 What is this? Competitors Rank : 77 of 494 Competitors Access the full list of 47 Embedded Lending St"
+      ]
     }
   ]
 }

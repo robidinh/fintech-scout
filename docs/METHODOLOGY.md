@@ -92,6 +92,8 @@ A fresh call is used because a model asked to review its own answer in the same 
 4. Look for each figure on the page, allowing for unit differences ("15.5M" matches "15,500,000", "1.70bn" matches "1.7 billion").
 5. Mark the claim verified (all figures found), partial, not found, unreachable (page could not be downloaded) or no figures (nothing numeric to check, reported separately).
 
+**Measured accuracy.** I read all 24 checkable claims from the example run against their pages (`handcheck.py`). Of the 23 marked verified, 19 were fully supported, 2 partly and 2 not. Three of the four failures were one funding round recorded as total funding; the fourth matched a "Tracxn Score: 49/100" instead of a company count. One claim marked not found was correct; that page loads its content with JavaScript. A sample of 24 from one run is small, so treat 83% as a rough figure.
+
 **Limits.** A match shows the number is on the page, not that it means the same thing there. Pages that need JavaScript or a login can't be checked. Currencies aren't compared. European decimal commas ("1,7") can be misread. Pages change over time.
 
 ## 9. Cost control

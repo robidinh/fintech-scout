@@ -417,6 +417,49 @@ class TestFinishOutputs(unittest.TestCase):
         self.assertEqual(wb["Market map"]["P2"].value, "yes")  # shortlisted
 
 
+class TestHandCheck(unittest.TestCase):
+    def test_make_and_score(self):
+        from openpyxl import load_workbook
+
+        from scout.handcheck import make_sheet, score_sheet
+
+        tmp = Path(tempfile.mkdtemp())
+        claims = [
+            {
+                "company": "A",
+                "claim": "Raised EUR 12M",
+                "url": "https://x.example",
+                "status": "verified",
+                "context": ["A raised EUR 12 million"],
+            },
+            {
+                "company": "B",
+                "claim": "Raised EUR 9.5M",
+                "url": "https://y.example",
+                "status": "verified",
+                "context": ["Revenue was 9.5 million"],
+            },
+            {
+                "company": "C",
+                "claim": "Has a licence",
+                "url": "https://z.example",
+                "status": "no_figures",
+            },
+        ]
+        (tmp / "verification.json").write_text(json.dumps({"summary": {}, "claims": claims}))
+        make_sheet(tmp)
+
+        wb = load_workbook(tmp / "hand_check.xlsx")
+        ws = wb["Hand check"]
+        self.assertEqual(ws.max_row, 3)  # only claims with figures
+        ws["G2"], ws["G3"], ws["H3"] = "supports", "does not support", "9.5M is revenue"
+        wb.save(tmp / "hand_check.xlsx")
+
+        result = score_sheet(tmp)
+        self.assertEqual(result["precision"], 0.5)
+        self.assertIn("9.5M is revenue", (tmp / "hand_check.md").read_text(encoding="utf-8"))
+
+
 class TestChecks(unittest.TestCase):
     def test_duplicate_website_rejected(self):
         s = ScoutState(theme="t", out_dir=Path(tempfile.mkdtemp()), track_grounding=False)

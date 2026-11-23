@@ -38,8 +38,9 @@ TOOL_SCHEMAS = [
             description={**_STR, "description": "What they do and for whom, 1-3 sentences"},
             funding_amount={
                 "type": ["number", "null"],
-                "description": "Total disclosed funding as a full number in the original currency, "
-                "e.g. 33100000 for EUR 33.1M (not 33.1); null if unknown",
+                "description": "Total disclosed funding across all rounds, as a full number in the "
+                "original currency, e.g. 33100000 for EUR 33.1M (not 33.1). A single round is not the "
+                "total: add up every round you found and list them in the evidence. Null if unknown.",
             },
             funding_currency={**_STR, "description": "ISO code, e.g. USD, EUR, PLN"},
             funding_source_url={"type": ["string", "null"]},
