@@ -9,6 +9,15 @@ from .export import export_run
 from .verify import verify_run
 
 
+def source_check_line(s: dict) -> str:
+    """The memo footer."""
+    pages = "page" if s["unreachable"] == 1 else "pages"
+    return (
+        f"*Source check: {s['verified']} of {s['checkable']} checkable claims found on the "
+        f"cited page ({s['unreachable']} {pages} unreachable). Details in verification.md.*\n"
+    )
+
+
 def finish_outputs(out_dir: Path, verbose: bool = True, fetch=None) -> dict | None:
     """Check each claim against its cited page, then build market_map.xlsx."""
     if not (out_dir / "candidates.json").exists():
@@ -18,10 +27,7 @@ def finish_outputs(out_dir: Path, verbose: bool = True, fetch=None) -> dict | No
     memo = out_dir / "memo.md"
     if memo.exists():
         with memo.open("a", encoding="utf-8") as f:
-            f.write(
-                f"*Source check: {s['verified']} of {s['checkable']} checkable claims found on the "
-                f"cited page ({s['unreachable']} pages unreachable). Details in verification.md.*\n"
-            )
+            f.write(source_check_line(s))
 
     summary_path = out_dir / "run_summary.json"
     if summary_path.exists():

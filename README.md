@@ -110,7 +110,7 @@ The tests replace Claude with a scripted fake, so they run offline in a couple o
 - Reading the cited pages by hand showed the source check is right about 83% of the time, and that most errors came from treating one funding round as total funding (see above).
 - A cheaper model recorded EUR 33.1M of funding as "33". The source check caught it because 33 wasn't on the page. Validation now rejects amounts that look like millions.
 - The first runs were expensive because every turn resends the whole conversation, search results included. Prompt caching cut the cost of that repeated input to about 5%.
-- The critic finds real problems, but the agent tended to reword a flagged claim rather than remove it. The instruction now says to source it or delete it.
+- In the example run the critic flagged five claims in round one and five in round two, which looks as if nothing was fixed. The audit log shows otherwise: the agent fixed the two flags that were in its own text. The other three were in score rationales, which the memo copies from the scoring step; `write_memo` can't change them, the feedback doesn't mention re-scoring, and the critic flagged them even though its prompt says to ignore rationales. Round two flagged those three again, plus another rationale and a new sentence the agent had written while fixing the first round. The feedback wording has been tightened since, but rationales still can't be fixed this way.
 
 ## Limitations
 

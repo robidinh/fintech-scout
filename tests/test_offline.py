@@ -393,6 +393,13 @@ class TestRobustness(unittest.TestCase):
 
 
 class TestFinishOutputs(unittest.TestCase):
+    def test_footer_singular_and_plural(self):
+        from scout.postrun import source_check_line
+
+        for n, text in [(0, "0 pages"), (1, "1 page"), (2, "2 pages")]:
+            line = source_check_line({"verified": 3, "checkable": 4, "unreachable": n})
+            self.assertIn(f"({text} unreachable)", line)
+
     def test_verify_and_excel_after_run(self):
         from openpyxl import load_workbook
 

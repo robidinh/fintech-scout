@@ -128,4 +128,4 @@ The critic model could not match these statements to recorded evidence. Treat th
 
 ---
 *Run stats: 6 companies researched, 15 web searches, 124 sources seen, 2 fact-check round(s), ~$0.64 estimated cost, 210s. Model: claude-sonnet-5-5.*
-*Source check: 23 of 24 checkable claims found on the cited page (1 pages unreachable). Details in verification.md.*
+*Source check: 23 of 24 checkable claims found on the cited page (1 page unreachable). Details in verification.md.*
