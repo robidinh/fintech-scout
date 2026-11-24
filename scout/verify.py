@@ -1,6 +1,6 @@
 """Check each claim against the page it cites.
 
-Downloads every cited page and looks for the claim's key figures (amounts, counts, percentages)
+Downloads every reachable cited page and looks for the claim's key figures (amounts, counts, percentages)
 in the page text. No model involved.
 
     python -m scout.verify outputs/<run folder>

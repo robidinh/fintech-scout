@@ -31,7 +31,8 @@ def render_memo(
     rows = s.ranked(set(s.approved))
     crit = list(SCORING)
 
-    byline = f"*Generated:* {date.today().isoformat()} · shortlist approved by a human reviewer"
+    approval = "approved automatically" if s.auto_approved else "approved by a human reviewer"
+    byline = f"*Generated:* {date.today().isoformat()} · shortlist {approval}"
     if s.critic:
         byline += " · fact-checked by a critic model"
     md = [f"# {title}", "", f"*Theme:* {s.theme}  ", byline, ""]

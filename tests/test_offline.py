@@ -16,7 +16,7 @@ from scout.agent import auto_review, run
 from scout.checks import check_candidate
 from scout.critic import _parse, make_critic
 from scout.state import ScoutState
-from scout.tools import add_candidate
+from scout.tools import add_candidate, run_tool
 
 SCORES = {
     k: {"score": 4, "rationale": "solid evidence from two sources"}
@@ -422,6 +422,71 @@ class TestFinishOutputs(unittest.TestCase):
         self.assertEqual(wb.sheetnames[:2], ["Market map", "Weights"])
         self.assertTrue(str(wb["Market map"]["M2"].value).startswith("=ROUND("))  # live formula
         self.assertEqual(wb["Market map"]["P2"].value, "yes")  # shortlisted
+
+
+class TestCriticRationales(unittest.TestCase):
+    """Flags from the example run: three of five were in score rationales."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.state = ScoutState(theme="t", out_dir=self.tmp, track_grounding=False)
+        for c in GOOD:
+            add_candidate(self.state, **c)
+            self.score(c["name"])
+        self.state.approved = [c["name"] for c in GOOD]
+
+    def score(self, name, score=4, text="Direct Visa membership and PCI DSS Level 1 issuing."):
+        scores = {k: dict(v) for k, v in SCORES.items()}
+        scores["traction"] = {"score": score, "rationale": text}
+        return run_tool(self.state, "score_candidate", {"name": name, "scores": scores})
+
+    def test_rationale_flag_points_to_score_candidate(self):
+        for c in GOOD[1:]:
+            self.score(c["name"], text="Solid evidence from two sources.")
+        self.state.critic = lambda memo, evidence: (
+            [{"claim": "Alpha: PCI DSS Level 1 issuing", "reason": "not in evidence"}]
+            if "PCI DSS" in memo
+            else []
+        )
+        first = run_tool(self.state, "write_memo", MEMO)
+        self.assertFalse(first["ok"])
+        self.assertIn("score_candidate", first["next"])
+        self.assertIn("Alpha / traction", first["next"])
+
+        self.assertTrue(self.score("Alpha", text="Direct Visa membership.")["ok"])
+        second = run_tool(self.state, "write_memo", MEMO)
+        self.assertEqual(second["unresolved_claims"], 0)
+        self.assertNotIn("PCI DSS", (self.tmp / "memo.md").read_text(encoding="utf-8"))
+
+    def test_paraphrased_rationale_flag_uses_critic_label(self):
+        flag = {"claim": "holds a card certification", "reason": "x", "where": "rationale"}
+        self.state.critic = lambda memo, evidence: [flag]
+        self.assertIn("score_candidate", run_tool(self.state, "write_memo", MEMO)["next"])
+
+    def test_prose_flag_does_not_mention_score_candidate(self):
+        flag = {"claim": "The market is worth $5bn", "reason": "x", "where": "prose"}
+        self.state.critic = lambda memo, evidence: [flag]
+        self.assertNotIn("score_candidate", run_tool(self.state, "write_memo", MEMO)["next"])
+
+    def test_scores_are_locked_after_approval(self):
+        self.assertFalse(self.score("Alpha", score=5)["ok"])
+        self.assertEqual(self.state.candidates["alpha"]["scores"]["traction"]["score"], 4)
+
+    def test_critic_prompt_checks_rationales(self):
+        from scout.critic import CRITIC_PROMPT
+
+        ignored = CRITIC_PROMPT.split("Ignore:")[1].split("Return ONLY")[0]
+        self.assertNotIn("rationale", ignored)
+        self.assertIn("Check the score rationales", CRITIC_PROMPT)
+
+    def test_auto_approval_is_not_called_human(self):
+        self.state.ask_human = auto_review
+        self.state.validated = True
+        run_tool(self.state, "request_human_review", {"shortlist": self.state.approved})
+        run_tool(self.state, "write_memo", MEMO)
+        memo = (self.tmp / "memo.md").read_text(encoding="utf-8")
+        self.assertIn("shortlist approved automatically", memo)
+        self.assertNotIn("human reviewer", memo)
 
 
 class TestHandCheck(unittest.TestCase):

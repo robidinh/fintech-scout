@@ -18,10 +18,13 @@ Below is the EVIDENCE the research agent recorded, then the MEMO.
 List every factual statement in the memo (numbers, dates, amounts, rankings, deals,
 licences, named events) that is NOT supported by the evidence.
 
-Ignore: opinions, recommendations, scores and their rationales, and statements that
-only restate or round numbers that are in the evidence.
+Check the score rationales under "Company notes" too: the facts in them need evidence.
 
-Return ONLY a JSON array, no prose. Each item: {"claim": "<short quote>", "reason": "<why unsupported>"}.
+Ignore: opinions, recommendations, the 1-5 scores themselves, and statements that only
+restate or round numbers that are in the evidence.
+
+Return ONLY a JSON array, no prose. Each item:
+{"claim": "<exact quote>", "reason": "<why unsupported>", "where": "rationale" or "prose"}.
 Return [] if everything is supported.
 
 EVIDENCE:

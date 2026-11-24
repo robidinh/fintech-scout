@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from .checks import check_candidate
 from .config import MAX_CRITIC_ROUNDS, SCORING
 from .report import render_memo, save_data
@@ -89,6 +91,15 @@ def score_candidate(s: ScoutState, name, scores):
         if len(v.get("rationale", "").strip()) < 15:
             return {"ok": False, "error": f"{crit}: give a real rationale"}
 
+    if s.approved and c["name"] in s.approved:
+        changed = [k for k in SCORING if scores[k]["score"] != c["scores"][k]["score"]]
+        if changed:
+            return {
+                "ok": False,
+                "error": f"{c['name']} is already approved: keep the scores for {changed} and "
+                "change only the rationale text.",
+            }
+
     c["scores"] = {k: scores[k] for k in SCORING}
     c["total"] = s.total_score(c["scores"])
     s.validated = False
@@ -147,12 +158,53 @@ def request_human_review(s: ScoutState, shortlist, note=""):
     if decision["approved"]:
         s.approved = decision["shortlist"]
         s.reviewer_comment = decision.get("comment", "")
+        s.auto_approved = decision.get("auto", False)
     return {"ok": True, **decision}
+
+
+def _squash(text: str) -> str:
+    return re.sub(r"\W+", " ", text.lower()).strip()
+
+
+def flagged_rationales(s: ScoutState, claim: str) -> list[str]:
+    """Score rationales a flagged quote comes from, as "Company / criterion"."""
+    hits = []
+    for c in s.candidates.values():
+        quote = _squash(claim).removeprefix(_squash(c["name"])).strip()
+        if len(quote) < 8:
+            continue
+        for crit, v in c["scores"].items():
+            if quote in _squash(v["rationale"]):
+                hits.append(f"{c['name']} / {crit}")
+    return hits
+
+
+def _fix_instructions(s: ScoutState, unsupported: list[dict]) -> str:
+    steps = [
+        "Fact-check failed. For each flagged claim: if a URL from your search results supports "
+        "it, record it with add_fact; otherwise DELETE the claim or cut it back to exactly what "
+        "the recorded evidence says. Do not reword an unsupported claim and keep it."
+    ]
+    located = {u["claim"]: flagged_rationales(s, u["claim"]) for u in unsupported}
+    in_rationale = [u for u in unsupported if located[u["claim"]] or u.get("where") == "rationale"]
+    if in_rationale:
+        listed = "; ".join(
+            f'"{u["claim"]}" ({", ".join(located[u["claim"]]) or "find the company"})'
+            for u in in_rationale
+        )
+        steps.append(
+            "These are in score rationales, which write_memo cannot change. Fix them with "
+            f"score_candidate, same scores, corrected rationale: {listed}."
+        )
+    steps.append(
+        "Anything still flagged next round is published as an open item. Then call write_memo again."
+    )
+    return " ".join(steps)
 
 
 def write_memo(s: ScoutState, title, executive_summary, key_trends, market_map, recommendations):
     if not s.approved:
-        return {"ok": False, "error": "A human has not approved a shortlist yet."}
+        return {"ok": False, "error": "The shortlist has not been approved yet."}
     sections = dict(
         title=title,
         executive_summary=executive_summary,
@@ -171,13 +223,7 @@ def write_memo(s: ScoutState, title, executive_summary, key_trends, market_map, 
         return {
             "ok": False,
             "unsupported_claims": unsupported,
-            "next": (
-                "Fact-check failed. For each flagged claim: if a URL from your search results "
-                "supports it, record it with add_fact; otherwise DELETE the claim or cut it back "
-                "to exactly what the recorded evidence says. Do not reword an unsupported claim "
-                "and keep it. Anything still flagged next round is published as an open item. "
-                "Then call write_memo again."
-            ),
+            "next": _fix_instructions(s, unsupported),
         }
 
     # last round: whatever is still unsupported is printed in the memo, not hidden

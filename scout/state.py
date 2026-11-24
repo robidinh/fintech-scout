@@ -43,6 +43,7 @@ class ScoutState:
     min_candidates: int = MIN_CANDIDATES
     validated: bool = False
     approved: list | None = None
+    auto_approved: bool = False
     reviewer_comment: str = ""
     critic_rounds: int = 0
     critic_log: list = field(default_factory=list)

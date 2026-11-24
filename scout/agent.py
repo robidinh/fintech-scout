@@ -40,8 +40,9 @@ Workflow:
 7. Call request_human_review with the shortlist you recommend and a short note. If the human edits or rejects,
    follow their feedback.
 8. After approval, call write_memo. Only state facts you recorded with add_candidate or add_fact; no extra details
-   from memory (countries, certifications, dates, debt/equity splits). A critic will fact-check the memo; delete or
-   source whatever it flags and call write_memo again.
+   from memory (countries, certifications, dates, debt/equity splits). The same goes for score rationales, which are
+   printed in the memo. A critic will fact-check both; delete or source whatever it flags (score rationales with
+   score_candidate, keeping the scores) and call write_memo again.
 
 Rules: never invent companies, figures or URLs. If evidence is thin, say so or drop the candidate."""
 
@@ -52,6 +53,7 @@ _CHECKPOINT_FIELDS = (
     "facts",
     "validated",
     "approved",
+    "auto_approved",
     "reviewer_comment",
     "critic_rounds",
     "critic_log",
@@ -92,7 +94,7 @@ def console_review(shortlist: list[dict], note: str) -> dict:
 
 def auto_review(shortlist: list[dict], note: str) -> dict:
     names = [c["name"] for c in shortlist]
-    return {"approved": True, "shortlist": names, "comment": "auto-approved (demo mode)"}
+    return {"approved": True, "shortlist": names, "comment": "", "auto": True}
 
 
 # --- checkpoints ---
@@ -114,7 +116,7 @@ def load_checkpoint(out_dir: Path, **state_kwargs) -> tuple[ScoutState, list]:
     saved = data["state"]
     state = ScoutState(theme=saved["theme"], out_dir=out_dir, **state_kwargs)
     for f in _CHECKPOINT_FIELDS[1:]:
-        setattr(state, f, saved[f])
+        setattr(state, f, saved.get(f, getattr(state, f)))
     state.seen_urls = set(saved["seen_urls"])
     return state, data["messages"]
 

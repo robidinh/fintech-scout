@@ -19,7 +19,7 @@ def source_check_line(s: dict) -> str:
 
 
 def finish_outputs(out_dir: Path, verbose: bool = True, fetch=None) -> dict | None:
-    """Check each claim against its cited page, then build market_map.xlsx."""
+    """Check claims against their cited pages where reachable, then build market_map.xlsx."""
     if not (out_dir / "candidates.json").exists():
         return None
     s = verify_run(out_dir, verbose=False, **({"fetch": fetch} if fetch else {}))

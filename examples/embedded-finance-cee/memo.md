@@ -1,7 +1,9 @@
 # Embedded Finance Startups in Central and Eastern Europe: Market Map and Shortlist
 
 *Theme:* embedded finance startups in Central and Eastern Europe  
-*Generated:* 2026-11-23 · shortlist approved by a human reviewer · fact-checked by a critic model
+*Generated:* 2026-11-23 · shortlist approved automatically · fact-checked by a critic model
+
+> Edited by hand after the run; see [README.md](README.md) for what changed.
 
 ## Executive summary
 This memo maps embedded finance startups in CEE across three segments: embedded lending, embedded payments and checkout financing, and card-issuing and banking-as-a-service (BaaS) infrastructure. We validated six candidates and recommend five. They are Wealthon (Poland), Wallester (Estonia), Flowpay (Czech Republic), Montonio (Estonia) and PayPo (Poland). Paynetics (Bulgaria) was validated but held back because its only sourced funding is a €2.5M round from 2020. The wider backdrop is supportive. Startups in CEE raised €1.83 billion from January to September 2026, up 25% from €1.46 billion a year earlier. Czech startups raised the most capital (€513 million), and Polish startups closed the most rounds (67). The evidence base is thin in places. Our search budget limited us to six validated names against a target of about eight. Several funding figures are unsourced. We found no embedded insurance startups and little on Romania, Hungary or the Balkans.

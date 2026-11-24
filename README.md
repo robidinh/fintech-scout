@@ -2,7 +2,7 @@
 
 A research agent that maps fintech startups for a given theme and writes a short strategy memo for a bank, for example on *embedded finance startups in Central and Eastern Europe*.
 
-Claude does the research: it searches the web, picks companies and rates them. Ordinary Python code checks that work. Cited links must come from the agent's own search results, every company needs independent sources, a person approves the shortlist, a second model call fact-checks the memo, and afterwards each cited page is downloaded to confirm the numbers are on it. Every step is logged.
+Claude does the research: it searches the web, picks companies and rates them. Ordinary Python code checks that work. Cited links must come from the agent's own search results, every company needs independent sources, a person approves the shortlist, a second model call fact-checks the memo, and afterwards every reachable cited page is downloaded to check that the numbers are on it. Every step is logged.
 
 I built it to see how far you can trust an LLM with analyst-style research if the checking is done outside the model.
 
@@ -12,7 +12,7 @@ python -m scout "embedded finance startups in Central and Eastern Europe"
 
 ## Example
 
-A full run is in [`examples/embedded-finance-cee/`](examples/embedded-finance-cee/): the [memo](examples/embedded-finance-cee/memo.md), the [Excel market map](examples/embedded-finance-cee/market_map.xlsx), the [source check](examples/embedded-finance-cee/verification.md), my [hand check](examples/embedded-finance-cee/hand_check.md) of it, and the [audit log](examples/embedded-finance-cee/audit.jsonl).
+A full run is in [`examples/embedded-finance-cee/`](examples/embedded-finance-cee/): the [memo](examples/embedded-finance-cee/memo.md), the [Excel market map](examples/embedded-finance-cee/market_map.xlsx), the [source check](examples/embedded-finance-cee/verification.md), my [hand check](examples/embedded-finance-cee/hand_check.md) of it, and the [audit log](examples/embedded-finance-cee/audit.jsonl). In this run the shortlist was approved automatically, not reviewed by a person, and the memo has small hand edits; both are explained in the [example notes](examples/embedded-finance-cee/README.md).
 
 | Claude Sonnet 5.5, one run, Nov 2026 | |
 |---|---|
@@ -47,7 +47,7 @@ The failures were instructive:
 4. `validate_candidates` runs fixed data checks: at least two independent sources, links that appeared in the search results, funding with a cited source, plausible numbers. Claude has to fix or drop what fails.
 5. The shortlist is shown in the terminal. I can approve it, remove companies, or reject it with feedback.
 6. Claude writes the memo. A separate model call that only sees the memo and the recorded evidence lists any claim it cannot match. Claude gets one round to fix those; anything left is printed in the memo as an open item.
-7. After the run, each cited page is downloaded and the claim's figures are looked up on it. Then the Excel file is built.
+7. After the run, every reachable cited page is downloaded and the claim's figures are looked up on it. Then the Excel file is built.
 
 The order is enforced in code, not just in the prompt: review is refused until validation passes, and the memo is refused until someone approves.
 
@@ -110,7 +110,7 @@ The tests replace Claude with a scripted fake, so they run offline in a couple o
 - Reading the cited pages by hand showed the source check is right about 83% of the time, and that most errors came from treating one funding round as total funding (see above).
 - A cheaper model recorded EUR 33.1M of funding as "33". The source check caught it because 33 wasn't on the page. Validation now rejects amounts that look like millions.
 - The first runs were expensive because every turn resends the whole conversation, search results included. Prompt caching cut the cost of that repeated input to about 5%.
-- In the example run the critic flagged five claims in round one and five in round two, which looks as if nothing was fixed. The audit log shows otherwise: the agent fixed the two flags that were in its own text. The other three were in score rationales, which the memo copies from the scoring step; `write_memo` can't change them, the feedback doesn't mention re-scoring, and the critic flagged them even though its prompt says to ignore rationales. Round two flagged those three again, plus another rationale and a new sentence the agent had written while fixing the first round. The feedback wording has been tightened since, but rationales still can't be fixed this way.
+- In the example run the critic flagged five claims in round one and five in round two, which looks as if nothing was fixed. The audit log shows otherwise: the agent fixed the two flags that were in its own text. The other three were in score rationales, which the memo copies from the scoring step; `write_memo` can't change them, the feedback doesn't mention re-scoring, and the critic flagged them even though its prompt says to ignore rationales. Round two flagged those three again, plus another rationale and a new sentence the agent had written while fixing the first round. Rationales are now explicitly checked, the feedback sends the agent to `score_candidate` for them, and scores are locked after approval so only the text can change. This is tested offline, not yet in a live run.
 
 ## Limitations
 
